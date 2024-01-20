@@ -3,3 +3,6 @@ This is a Github repository for self-supervised image reconstruction for sparse 
 
 ### Installation
 We have included the .yml file which we have used. 
+
+
+![Alt Text](url_or_relative_path_to_image)
