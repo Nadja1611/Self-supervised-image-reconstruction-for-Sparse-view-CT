@@ -13,28 +13,17 @@ from tomosipo.torch_support import (
     to_autograd,
 )
 from model import *
+from poisson_noise import *
 from itertools import combinations
 import LION.CTtools.ct_utils as ct
 from ts_algorithms import fbp, tv_min2d
 import LION.CTtools.ct_geometry as ctgeo
 from skimage.transform import rescale, resize
 import skimage
+
 device = "cuda:0"
-
-
-
 photon_count=3000 # 
 attenuation_factor=2.76 # corresponds to absorption of 50%
-def apply_noise(img, photon_count):
-    opt = dict(dtype=np.float32)
-    img = np.exp(-img, **opt)
-    # Add poisson noise and retain scale by dividing by photon_count
-    img = np.random.poisson(img * photon_count)
-    img[img == 0] = 1
-    img = img / photon_count
-    # Redo log transform and scale img to range [0, img_max] +- some noise.
-    img = -np.log(img, **opt)
-    return img
 
 
 
