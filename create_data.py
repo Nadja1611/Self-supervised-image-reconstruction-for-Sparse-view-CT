@@ -1,8 +1,9 @@
+
 import LION.CTtools.ct_utils as ct
 from ts_algorithms import fbp, tv_min2d
 import LION.CTtools.ct_geometry as ctgeo
-
-
+import torch
+import numpy as np
 
 def create_sinograms(images, angles_full):
     # 0.1: Make geometry:
@@ -12,7 +13,7 @@ def create_sinograms(images, angles_full):
     # 0.2: create operator:
     op = ct.make_operator(geo)
     # 0.3: forward project:
-    sino = op(torch.from_numpy(images))
+    sinogram_full = op(torch.from_numpy(images))
     sinogram_full = torch.moveaxis(sinogram_full, -1, -2)
     return np.asarray(sinogram_full.unsqueeze(1))
 
