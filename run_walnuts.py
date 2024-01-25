@@ -142,7 +142,7 @@ images = Images[5:]
 
 ########################### N2I ###########################
 number_angles = 64
-sinograms = torch.tensor(create_noisy_sinograms(images, number_angles, 0))
+sinograms = torch.tensor(create_sinograms(images, number_angles))
 
 torch.manual_seed(0)
 
