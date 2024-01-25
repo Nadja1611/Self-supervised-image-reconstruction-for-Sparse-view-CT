@@ -1,25 +1,23 @@
-
-
-
 import torch
 import cv2 as cv
 import os
 import matplotlib.pyplot as plt
 import torch.optim as optim
-
 import skimage.metrics as skm
-
 import numpy as np
 from tomosipo.torch_support import (
     to_autograd,
 )
 from model import *
+from poisson_noise import *
+from create_data import *
 from itertools import combinations
 import LION.CTtools.ct_utils as ct
 from ts_algorithms import fbp, tv_min2d
 import LION.CTtools.ct_geometry as ctgeo
 from skimage.transform import rescale, resize
 import skimage
+
 device = "cuda:0"
 
 
